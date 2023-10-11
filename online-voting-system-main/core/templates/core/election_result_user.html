@@ -1,0 +1,83 @@
+{% extends "base.html" %} {% block title %}Election Result{% endblock %}
+
+{% block content %}
+
+<!-- RESULT PAGE -->
+<section style="text-align: center;">
+    <div class="section-header">
+        {{ election }} Leaderboard
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card election-card shadow">
+                <div class="card-body">
+                    <div class="text-center pb-4">
+                        <h4 class="elect-title">Election Details</h4>
+                    </div>
+                    <div class="pb-4">
+                        <div class="d-flex justify-content-between mb-4">
+                            <span>Election Name</span>
+                            <span>{{ election.election_name }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span>State</span>
+                            <span>{{ election.election_state }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span>Start Date</span>
+                            <span>{{ election.start_date }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span>End Date</span>
+                            <span>{{ election.end_date }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span>Election Period</span>
+                            <span>{% if election.is_active %}{{ election_days_left }} Days Left{% else %}Over{% endif %}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span>No. of Candidates</span>
+                            <span>{{ candidates|length }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span>Total Votes</span>
+                            <span>{{ total_votes }}</span>
+                        </div>
+                       <!-- <div class="d-flex justify-content-between mb-4">
+                            {% if election.is_active == True %}
+                            <span>Leading Candidate</span>
+                            <span class="cand-rslt">{{ leading_candidate.first.cand_name }}</span>
+                            {% else %}
+                            <span><b>Winner</b></span>
+                            <span class="cand-rslt">{{ leading_candidate.first.cand_name }}</span>
+                            {% endif %}
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top:170px";>
+            <div class="result-container">
+             
+              </div>
+            <h2>Winner is {{ leading_candidate.first.cand_name }}</h2>
+        </div>
+      
+    </div>
+</section>
+<style>
+    {
+        .result-container {
+            border: 2px solid #000;
+            border-radius: 5px;
+            padding: 10px;
+            display: inline-block;
+          }
+          
+          .result-text {
+            margin: 0;
+            text-align: center;
+          }
+    }
+<!-- END RESULT PAGE -->
+{% endblock %}

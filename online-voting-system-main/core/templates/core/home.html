@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- Introduction Section -->
+<section>
+    <div>
+        <div>
+            <div class="row">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1" style="margin-left: 30%;">
+
+                    <div class="mx-1 mt-5">
+                       <!-- <p class="ovs-title">Election Voting System</p>-->
+                        <h2 class="big-heading">Cast vote and Choose Your Leader!</h2>
+                        <a href="{% if user.is_authenticated %}{% url 'elections' %}{% else %}{% url 'login' %}{% endif %}"><button type="button"
+                                class="btn btn-success btn-lg getstart-button">Get Started</button></a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
